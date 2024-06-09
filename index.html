@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microstack Sensor Configuration</title>
+    <script>
+        function togglePassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Microstack Sensor Configuration</h1>
+    <form action="/configure" method="post">
+        <label for="ssid">SSID:</label>
+        <input type="text" id="ssid" name="ssid" value="MicrostackIoT"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="Geeta@1756">
+        <input type="checkbox" onclick="togglePassword()"> Show Password<br>
+        <label for="interval">Sampling Interval (seconds):</label>
+        <input type="text" id="interval" name="interval" value="1000"><br>
+        <label for="url">Data Upload URL:</label>
+        <input type="text" id="url" name="url" value="https://eggsmart.app/api/sensor_data" style="width: 400px;"><br>
+        <label for="url">Meta Data URL:</label>
+        <input type="text" id="url" name="url" value="https://eggsmart.app/api/sensor_data" style="width: 400px;"><br>
+        <label for="url">OTA URL:</label>
+        <input type="text" id="url" name="url" value="https://eggsmart.app/api/sensor_data" style="width: 400px;"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
