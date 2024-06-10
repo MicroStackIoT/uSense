@@ -14,6 +14,15 @@
 #define SENSOR_INTERVAL "sensor_interval"
 #define UPLOAD_URL "upload_url"
 
+esp_err_t nvs_init(void)
+{
+    sp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+}
+
 static esp_err_t nvs_set_config(int interval, const char* url)
 {
     nvs_handle_t nvs_handle;
@@ -73,25 +82,4 @@ static esp_err_t nvs_get_config(char* ssid, char* password)
 
     nvs_close(nvs_handle);
     return ESP_OK;
-}
-
-void app_main(void)
-{
-    char ssid[32] = {0};
-    char password[64] = {0};
-    char url[128] = {0};
-    size_t url_len = sizeof(url);
-
-    sp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        ret = nvs_flash_init();
-    }
-    ESP_ERROR_CHECK(ret);
-
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
-    ESP_ERROR_CHECK(esp_wifi_init(&WIFI_INIT_CONFIG_DEFAULT()));
-
-     if (nvs_get_wifi_config(ssid, password) == ESP_OK) 
 }

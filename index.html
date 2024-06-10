@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Microstack Sensor Configuration</title>
+    <title>MicroStack Sensor Configuration</title>
     <script>
         function togglePassword() {
             var x = document.getElementById("password");
@@ -21,14 +21,14 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" value="Geeta@1756">
         <input type="checkbox" onclick="togglePassword()"> Show Password<br>
-        <label for="interval">Sampling Interval (seconds):</label>
+        <label for="interval">Sampling interval (seconds):</label>
         <input type="text" id="interval" name="interval" value="1000"><br>
-        <label for="url">Data Upload URL:</label>
+        <label for="url">Sensor data URL:</label>
         <input type="text" id="url" name="url" value="https://eggsmart.app/api/sensor_data" style="width: 400px;"><br>
-        <label for="url">Meta Data URL:</label>
-        <input type="text" id="url" name="url" value="https://eggsmart.app/api/sensor_data" style="width: 400px;"><br>
+        <label for="url">Meta data URL:</label>
+        <input type="text" id="url" name="url" value="https://eggsmart.app/api/meta_data" style="width: 400px;"><br>
         <label for="url">OTA URL:</label>
-        <input type="text" id="url" name="url" value="https://eggsmart.app/api/sensor_data" style="width: 400px;"><br>
+        <input type="text" id="url" name="url" value="https://eggsmart.app/api/ota_link" style="width: 400px;"><br>
         <input type="submit" value="Submit">
     </form>
 </body>
