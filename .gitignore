@@ -29,6 +29,8 @@
 
 # Executables
 build/
+managed_components/
+.DS_Store
 *.exe
 *.out
 *.app
@@ -51,3 +53,4 @@ Module.symvers
 Mkfile.old
 dkms.conf
 sdkconfig.old
+dependencies.lock
