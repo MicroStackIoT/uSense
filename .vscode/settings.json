@@ -1,4 +1,9 @@
 {
     "idf.adapterTargetName": "esp32s2",
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "sensirion_common.h": "c",
+        "sensirion_i2c_hal.h": "c",
+        "sensirion_i2c.h": "c"
+    }
 }
