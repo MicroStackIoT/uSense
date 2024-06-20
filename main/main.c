@@ -8,6 +8,7 @@
 */
 
 #include "wifi_sta.h"
+#include "sensor_if.h"
 #include "main.h"
 #include "nvs.h"
 #include "led.h"
@@ -54,15 +55,19 @@ void app_main(void)
     strcpy((char *)wifi.sta.password, config.pass);
     wifi_sta_init(&wifi);
 
-    config.sample_interval += config.sample_interval*1000; 
+    config.sample_interval += config.sample_interval*50; 
 
     TickType_t xLastWakeTime;
     const TickType_t xFrequency = config.sample_interval;
     xLastWakeTime = xTaskGetTickCount();
-    
-    while (1)
+
+    float at, rh, lx;
+    sensor_if_init();
+    while(1)
     {
         vTaskDelayUntil( &xLastWakeTime, xFrequency);
         ESP_LOGE(TAG, "Sending data to :%s", config.data_url);
+        sensor_if_get_data(&at, &rh, &lx);
+        ESP_LOGE(TAG, "at:%f\trh:%f\tlx:%f", at, rh, lx);
     };
 }
